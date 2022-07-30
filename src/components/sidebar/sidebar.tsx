@@ -14,6 +14,7 @@ const Sidebar: React.FC = () => {
         <ul className="flex flex-col w-full space-y-3">
           {listSidebar.map((item) => (
             <SidebarItem 
+              key={item.slug}
               name={item.name} 
               slug={item.slug} 
               Icon={item.Icon}

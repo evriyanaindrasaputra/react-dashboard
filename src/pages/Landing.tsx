@@ -1,8 +1,11 @@
 import React from 'react'
+import FormSignIn from '~/components/form/form-signin'
 
 const Landing: React.FC = () => {
   return (
-    <div>Here Your ENV : {import.meta.env.VITE_API}</div>
+    <>
+      <FormSignIn />
+    </>
   )
 }
 
