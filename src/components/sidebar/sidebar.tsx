@@ -7,7 +7,7 @@ import SidebarItem from './sidebar-item'
 const Sidebar: React.FC = () => {
   return (
     <aside
-      className="w-16 shadow bg-white "
+      className=" w-16 shadow bg-white fixed top-0 bottom-0 "
     >
       <Link to='/dashboard/home' className="flex items-center justify-center py-4">
         <FaGithub className="text-indigo-500 w-8 h-8" />

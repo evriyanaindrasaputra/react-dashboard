@@ -6,7 +6,7 @@ const DashboardCustomer: React.FC = () => {
     <>
       <HeaderDashboard 
         breadcrumb={[
-          { name: 'Customer', slug: 'dashboard/customer'},
+          { name: 'Customer', slug: '/dashboard/customer'},
         ]}
       />
       <p>Hello Dashboard Customer</p>
