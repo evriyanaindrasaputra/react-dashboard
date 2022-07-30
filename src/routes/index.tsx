@@ -1,10 +1,11 @@
 import { useRoutes } from 'react-router-dom';
+import Landing from '../pages/Landing';
 
 export function AppRoutes() {
 	return useRoutes([
 		{
 			path: '/',
-			element: <h1>Hello World!</h1>,
+			element: <Landing />,
 		},
     {
       path : '/dashboard',
