@@ -1,5 +1,6 @@
 import { useRoutes } from 'react-router-dom';
-import Landing from '../pages/Landing';
+import Dashboardlayout from '~/layouts/dashboard-layout';
+import Landing from '~/pages/Landing';
 
 export function AppRoutes() {
 	return useRoutes([
@@ -9,7 +10,18 @@ export function AppRoutes() {
 		},
     {
       path : '/dashboard',
-      element: <h1>Dashboard</h1>
+      element : <Dashboardlayout />,
+			children: [
+        {
+          path: "",
+          element: <h1>Home Dashboard</h1>,
+        },
+        { 
+					path: "user", 
+					element: <h1>Home User Dashboard</h1>  
+				},
+      ],
+
     }
 	]);
 }
