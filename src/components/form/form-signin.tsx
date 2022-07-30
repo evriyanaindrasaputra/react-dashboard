@@ -1,16 +1,27 @@
+import { useMutation } from '@tanstack/react-query'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { BiLogInCircle } from 'react-icons/bi'
+import { postLogin } from '~/lib/service'
+import Cookies from 'js-cookie'
 
 type UserSignIn = {
-  email : string
-  password : string
+  email: string
+  password: string
 }
 
 const FormSignIn: React.FC = () => {
   const { register, formState: { errors }, handleSubmit } = useForm<UserSignIn>()
-  async function onSubmit(values : UserSignIn) {
-    console.log(values)
+  const { mutate, isError, isLoading } = useMutation(postLogin, {
+    onError: (error: any) => {
+      console.error(error.response.data.error)
+    },
+    onSuccess: (data) => {
+      Cookies.set('token', data.access_token, { expires: 1 })
+    }
+  })
+  async function onSubmit(values: UserSignIn) {
+    mutate(values)
   }
   return (
     <div className='bg-white bg-opacity-60 backdrop-blur-xl p-5 rounded space-y-8'>

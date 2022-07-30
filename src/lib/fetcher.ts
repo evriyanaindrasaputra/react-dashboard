@@ -23,7 +23,7 @@ fetcher.interceptors.request.use(
 
 fetcher.interceptors.response.use(
   (response) => {
-    return response;
+    return response.data;
   },
   async (error) => {
     if (
