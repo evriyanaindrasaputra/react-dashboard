@@ -1,12 +1,14 @@
 import React from 'react'
-import Breadcrumb from '~/components/breadcrumb'
+import HeaderDashboard from '~/components/header-dashboard'
 
 const DashboardCustomer: React.FC = () => {
   return (
     <>
-      <Breadcrumb items={[
-        { name: 'Customer', slug: 'dashboard/customer'},
-      ]} />
+      <HeaderDashboard 
+        breadcrumb={[
+          { name: 'Customer', slug: 'dashboard/customer'},
+        ]}
+      />
       <p>Hello Dashboard Customer</p>
     </>
   )

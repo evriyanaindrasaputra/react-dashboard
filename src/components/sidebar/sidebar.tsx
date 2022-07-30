@@ -1,22 +1,24 @@
 import React from 'react'
+import { FaGithub } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { listSidebar } from '~/constants/sidebar'
 import SidebarItem from './sidebar-item'
 
 const Sidebar: React.FC = () => {
   return (
     <aside
-      className="w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-white "
+      className="w-16 shadow bg-white "
     >
-      <div className="flex items-center justify-center py-4">
-        <span className="leading-10 text-indigo-500 text-2xl font-bold ml-1 uppercase">Brandname</span>
-      </div>
-      <div className="px-4 py-6">
+      <Link to='/dashboard/home' className="flex items-center justify-center py-4">
+        <FaGithub className="text-indigo-500 w-8 h-8" />
+      </Link>
+      <div>
         <ul className="flex flex-col w-full space-y-3">
           {listSidebar.map((item) => (
-            <SidebarItem 
+            <SidebarItem
               key={item.slug}
-              name={item.name} 
-              slug={item.slug} 
+              name={item.name}
+              slug={item.slug}
               Icon={item.Icon}
             />
           ))}

@@ -1,12 +1,15 @@
 import React from 'react'
 import Breadcrumb from '~/components/breadcrumb'
+import HeaderDashboard from '~/components/header-dashboard'
 
 const Dashboard = () => {
   return (
     <>
-      <Breadcrumb items={[
-        { name: 'Dashboard', slug: 'dashboard', current: true }
-      ]} />
+      <HeaderDashboard
+        breadcrumb={[
+          { name: 'Dashboard', slug: 'dashboard', current: true }
+        ]}
+      />
       <p>Hello Dashboard</p>
     </>
   )

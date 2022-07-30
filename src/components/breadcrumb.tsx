@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsChevronRight } from 'react-icons/bs'
 import { BreadcrumbItem } from "~/types/breadcrumb";
+import clsx from 'clsx'
 
 type BreadcrumbProps = {
   items: BreadcrumbItem[]
@@ -11,22 +12,21 @@ type BreadcrumbProps = {
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
     <nav aria-label="Breadcrumb" className="hidden sm:flex">
-      <ol className="flex items-center space-x-4">
+      <ol className="flex items-center space-x-1">
         {items.map(({ name, slug, current }, index) => (
           <li key={name}>
             <div className="flex items-center">
               <Link to={slug}>
-                <a
-                  aria-current={current ? "page" : undefined}
-                  className="mr-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+                <span
+                  className={clsx(current ? 'font-bold' : '', "mr-1 text-sm font-medium text-gray-500 hover:text-gray-700")}
                 >
                   {name}
-                </a>
+                </span>
               </Link>
               {index < items.length - 1 &&
                 <BsChevronRight
                   aria-hidden="true"
-                  className="flex-shrink-0 h-5 w-5 text-gray-400"
+                  className="flex-shrink-0 h-4 w-4 text-gray-400"
                 />
               }
             </div>

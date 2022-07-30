@@ -1,19 +1,21 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Sidebar } from '~/types/sidebar';
+import clsx from 'clsx'
 
 
-const SidebarItem : React.FC<Sidebar> = ({slug, name, Icon}) => {
+const SidebarItem: React.FC<Sidebar> = ({ slug, name, Icon }) => {
   return (
     <li>
-      <Link
+      <NavLink
         to={slug}
-        className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100"
+        className={({ isActive }) => 
+          clsx(isActive ? 'font-bold text-emerald-600 bg-emerald-100 border-l-4 border-emerald-300' : '', "flex items-center justify-center h-10 text-gray-700")
+        }
       >
-        <Icon className='w-5 h-5' />
-        <span className="ml-3">{name}</span>
-      </Link>
-    </li>
+      <Icon className='w-5 h-5' />
+    </NavLink>
+    </li >
   )
 }
 

@@ -5,7 +5,7 @@ import { Sidebar } from '~/types/sidebar'
 export const listSidebar : Array<Sidebar> = [
   { 
     name : 'Home',
-    slug : '/dashboard',
+    slug : '/dashboard/home',
     Icon : RiHome8Line
   },
   { 
