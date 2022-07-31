@@ -22,8 +22,9 @@ export const getListCustomer = async (): Promise<{
 
 export const deleteCustomer = async (id: number) => {
   return await fetcher.delete('customers', {
-    // @ts-ignore
-    id
+    data :{
+      id
+    }
   })
 }
 
