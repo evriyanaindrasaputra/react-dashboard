@@ -28,12 +28,10 @@ fetcher.interceptors.response.use(
   },
   async (error) => {
     if (
-      error.response.data.statusCode === 401 &&
-      error.response.data.error === "Unauthorized"
-    ) {
+      error.response.status === 401  && error.response.data === 'Unauthorized.'
+      ) {
       Cookies.remove('token')
       delete fetcher.defaults.headers.common["Authorization"];
-      window.location.reload()
     }
     return Promise.reject(error);
   }
