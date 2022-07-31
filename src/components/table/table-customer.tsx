@@ -4,6 +4,8 @@ import { ColumnDef, flexRender, getCoreRowModel, useReactTable, getPaginationRow
 import { useQuery } from '@tanstack/react-query'
 import { getListCustomer } from '~/lib/service'
 import { Customer } from '~/types/customer'
+import ButtonActions from '../button/button-actions'
+
 
 const TableCustomer: React.FC = () => {
   const columns = React.useMemo<ColumnDef<Customer>[]>(
@@ -34,11 +36,11 @@ const TableCustomer: React.FC = () => {
         cell: info => info.getValue(),
         footer: props => props.column.id,
       },
-      // {
-      //   id: 'Actions',
-      //   // @ts-ignore
-      //   cell: props => <ButtonActions idSlug={props.row.original.id} page={pageIndex} limit={pageSize} />,
-      // }
+      {
+        id: 'Actions',
+        // @ts-ignore
+        cell: props => <ButtonActions customer={props.row.original}  />,
+      }
     ],
     []
   )
@@ -57,13 +59,13 @@ const TableCustomer: React.FC = () => {
     getPaginationRowModel: getPaginationRowModel(),
   })
   return (
-    <div className='relative max-w-6xl w-full rounded p-2 mx-auto overflow-x-auto'>
-      <table className='w-full text-sm text-left text-gray-500'>
+    <div className=' w-full max-w-xs md:max-w-none overflow-x-scroll p-6 bg-white rounded mt-5'>
+      <table className='w-full text-sm text-left text-gray-500 border'>
         <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id} className='px-6 py-3'>
+                <th key={header.id} className='px-2 md:px-6 w-10 py-3'>
                   {header.isPlaceholder ? null : (
                     <div
                       {...{
@@ -97,7 +99,7 @@ const TableCustomer: React.FC = () => {
                 <tr key={row.id} className='border-b odd:bg-white even:bg-gray-50'>
                   {row.getVisibleCells().map(cell => {
                     return (
-                      <td key={cell.id} className='px-6 py-4 break-words'>
+                      <td key={cell.id} className='px-2 md:px-6 w-10 py-4 break-words'>
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -172,7 +174,6 @@ const TableCustomer: React.FC = () => {
           ))}
         </select>
       </div>
-      <pre>{JSON.stringify(sorting, null, 2)}</pre>
     </div>
   )
 }
