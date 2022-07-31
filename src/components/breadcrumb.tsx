@@ -18,7 +18,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
             <div className="flex items-center">
               <Link to={slug}>
                 <span
-                  className={clsx(current ? 'font-bold' : '', "mr-1 text-sm font-medium text-gray-500 hover:text-gray-700")}
+                  className={clsx(current ? 'font-bold text-gray-800' : 'text-gray-500', "mr-1 text-sm font-medium  hover:text-gray-900")}
                 >
                   {name}
                 </span>

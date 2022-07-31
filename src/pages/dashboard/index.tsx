@@ -15,7 +15,8 @@ const Dashboard = () => {
     <>
       <HeaderDashboard
         breadcrumb={[
-          { name: 'Dashboard', slug: '/dashboard/home', current: true }
+          { name: 'Dashboard', slug: '/dashboard/home' },
+          { name: 'Mitramas Infosys Global', slug: '/dashboard/home', current: true }
         ]}
       />
       <section className="grid grid-cols-1 xl:grid-cols-home-dashboard gap-5 mt-5">
