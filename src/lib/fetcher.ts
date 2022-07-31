@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookies from 'js-cookie';
 
 // create instance from axios 
 const fetcher = axios.create({
@@ -8,10 +9,10 @@ const fetcher = axios.create({
 // Add a request interceptor
 fetcher.interceptors.request.use(
   function (config) {
-    // const token = getCookie("token");
-    // if (token) {
-    //   config.headers["Authorization"] = `Bearer ${token}`;
-    // }
+    const token = Cookies.get("token");
+    if (token && config.headers) {
+      config.headers["Authorization"] = `${token}`;
+    }
     // Do something before request is sent
     return config;
   },
@@ -28,9 +29,9 @@ fetcher.interceptors.response.use(
   async (error) => {
     if (
       error.response.data.statusCode === 401 &&
-      error.response.data.error === "Token is not valid/expired."
+      error.response.data.error === "Unauthorized"
     ) {
-      // delCookie("token");
+      Cookies.remove('token')
       delete fetcher.defaults.headers.common["Authorization"];
       window.location.reload()
     }

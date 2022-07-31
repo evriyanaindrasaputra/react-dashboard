@@ -1,5 +1,6 @@
 import React from 'react'
 import HeaderDashboard from '~/components/header-dashboard'
+import TableCustomer from '~/components/table/table-customer'
 
 const DashboardCustomer: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const DashboardCustomer: React.FC = () => {
           { name: 'Customer', slug: '/dashboard/customer'},
         ]}
       />
-      <p>Hello Dashboard Customer</p>
+      <TableCustomer />
     </>
   )
 }

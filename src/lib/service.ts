@@ -1,4 +1,5 @@
 import fetcher from "./fetcher"
+import { Customer } from '~/types/customer'
 
 export const postLogin = async (payload: { email: string, password: string }): Promise<{
   access_token: string,
@@ -9,4 +10,12 @@ export const postLogin = async (payload: { email: string, password: string }): P
     email: payload.email,
     password: payload.password
   })
+}
+
+export const getListCustomer = async () : Promise<{
+  success : boolean,
+  message : string
+  data : Customer[]
+}> => {
+  return await fetcher.get('customers')
 }
