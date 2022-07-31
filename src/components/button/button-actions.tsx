@@ -1,13 +1,16 @@
 import React from 'react'
 import { Dialog } from '@headlessui/react'
 import { RiErrorWarningLine } from 'react-icons/ri'
+import { AiOutlineClose } from 'react-icons/ai'
 import ModalComponent from '../modal/modal-component'
 import { useMutation } from '@tanstack/react-query'
 import { deleteCustomer } from '~/lib/service'
+import { Customer } from '~/types/customer'
 import { queryClient } from '~/providers/App'
 import { toast } from 'react-toastify'
+import FormEditCustomer from '../form/form-edit-customer'
 
-const ButtonActions: React.FC<{ id: number }> = ({ id }) => {
+const ButtonActions: React.FC<{ customer : Customer}> = ({ customer}) => {
   const [isEdit, setIsEdit] = React.useState<boolean>(false)
   const [isDelete, setIsDelete] = React.useState<boolean>(false)
   const deleteAction = useMutation(deleteCustomer, {
@@ -27,7 +30,9 @@ const ButtonActions: React.FC<{ id: number }> = ({ id }) => {
     setIsDelete(!isDelete)
   }
   async function handleDelete() {
-    await deleteAction.mutate(id)
+    if(typeof customer.id === 'number'){
+      await deleteAction.mutate(customer.id)
+    }
   }
   return (
     <>
@@ -38,28 +43,20 @@ const ButtonActions: React.FC<{ id: number }> = ({ id }) => {
       {/* Modal Edit */}
       <ModalComponent isOpen={isEdit} setIsOpen={displayModalEdit}>
         <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+          <div className="text-right">
+            <button
+              onClick={displayModalEdit}
+            >
+              <AiOutlineClose className='w-4 h-4' />
+            </button>
+          </div>
           <Dialog.Title
             as="h3"
             className="text-lg font-medium leading-6 text-gray-900"
           >
-            Payment successful
+            Edit Kustomer
           </Dialog.Title>
-          <div className="mt-2">
-            <p className="text-sm text-gray-500">
-              Your payment has been successfully submitted. We’ve sent
-              you an email with all of the details of your order.
-            </p>
-          </div>
-
-          <div className="mt-4">
-            <button
-              type="button"
-              className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-              onClick={displayModalEdit}
-            >
-              Got it, thanks!
-            </button>
-          </div>
+          <FormEditCustomer setIsOpen={displayModalEdit} customer={customer} />
         </Dialog.Panel>
       </ModalComponent>
       <ModalComponent isOpen={isDelete} setIsOpen={displayModalDelete}>

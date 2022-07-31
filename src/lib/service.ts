@@ -22,14 +22,26 @@ export const getListCustomer = async (): Promise<{
 
 export const deleteCustomer = async (id: number) => {
   return await fetcher.delete('customers', {
-    data :{
+    data: {
       id
     }
   })
 }
 
-export const addCustomer = async (payload : {name :string,address :string, country :string, phone_number: string, job_title: string}) => {
+export const addCustomer = async (payload: Customer) => {
   return await fetcher.post('customers', {
+    name: payload.name,
+    address: payload.address,
+    country: payload.country,
+    phone_number: payload.phone_number,
+    job_title: payload.job_title,
+    status: false
+  })
+}
+
+export const editCustomer = async (payload: Customer) => {
+  return await fetcher.put('customers', {
+    id: payload.id,
     name: payload.name,
     address: payload.address,
     country: payload.country,

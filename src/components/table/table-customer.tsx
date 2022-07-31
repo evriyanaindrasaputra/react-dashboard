@@ -43,7 +43,7 @@ const TableCustomer: React.FC = () => {
       {
         id: 'Actions',
         // @ts-ignore
-        cell: props => <ButtonActions id={props.row.original.id} />,
+        cell: props => <ButtonActions customer={props.row.original} />,
       }
     ],
     []
@@ -196,7 +196,7 @@ const TableCustomer: React.FC = () => {
       {/* Modal Add Customer */}
       <ModalComponent isOpen={isAdd} setIsOpen={displayModalAdd}>
         <Dialog.Panel className="w-full sm:max-w-4xl transform overflow-hidden rounded-2xl bg-white p-4 text-left align-middle shadow-xl transition-all">
-          <div className=" text-right">
+          <div className="text-right">
             <button
               onClick={displayModalAdd}
             >

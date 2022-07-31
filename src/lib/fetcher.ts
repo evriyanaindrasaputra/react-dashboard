@@ -32,6 +32,7 @@ fetcher.interceptors.response.use(
       ) {
       Cookies.remove('token')
       delete fetcher.defaults.headers.common["Authorization"];
+      window.location.reload();
     }
     return Promise.reject(error);
   }
