@@ -18,8 +18,8 @@ const Dashboard = () => {
           { name: 'Dashboard', slug: '/dashboard/home', current: true }
         ]}
       />
-      <section className="grid grid-cols-1 md:grid-cols-home-dashboard gap-5 mt-5">
-        <div className="bg-white shadow rounded row-span-3 overflow-hidden">
+      <section className="grid grid-cols-1 xl:grid-cols-home-dashboard gap-5 mt-5">
+        <div className="bg-white shadow rounded xl:row-span-3 overflow-hidden">
           <img
             className="w-full h-32 object-cover"
             src="https://images.unsplash.com/photo-1576496352276-9f1e2ed2fb2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1750&q=80"
@@ -107,12 +107,12 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white shadow rounded p-4 col-span-2">
+        <div className="bg-white shadow rounded p-4 xl:col-span-2">
           <header className="flex items-center justify-between py-3">
-            <span className="font-semibold">Lokasi 2</span>
+            <span className="font-semibold">Lokasi</span>
             <Link to="/dashboard/home" className=" text-emerald-600 text-base">Lihat semua</Link>
           </header>
-          <ol className="grid grid-cols-3 gap-4 mt-2">
+          <ol className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-2">
             <li className="bg-emerald-400 cursor-pointer rounded-md px-3 py-4 flex items-center justify-between text-white">
               <MdOutlineMapsHomeWork className=" w-10 h-10" />
               <div>
@@ -143,7 +143,7 @@ const Dashboard = () => {
               <span className="text-white text-sm">+ Tambah Akun Bank</span>
             </button>
           </header>
-          <ol className=" space-y-7 mt-2">
+          <ol className=" mt-2 grid  grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-5">
             <li className="flex items-start justify-between h-[100px]">
               <div className=" flex items-end justify-end p-2 w-[150px] h-full rounded-md bg-gradient-to-br from-yellow-200  to-emerald-600">
                 <SiVisa className="w-10 h-10 text-white" />
@@ -186,7 +186,7 @@ const Dashboard = () => {
             </li>
           </ol>
         </div>
-        <div className="bg-white shadow rounded p-4 row-span-2">
+        <div className="bg-white shadow rounded p-4 xl:row-span-2">
           <header className="flex items-center justify-between py-3">
             <span className="font-semibold">Aktivitas</span>
           </header>

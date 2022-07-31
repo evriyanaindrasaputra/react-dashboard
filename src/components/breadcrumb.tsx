@@ -11,7 +11,7 @@ type BreadcrumbProps = {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav aria-label="Breadcrumb" className="hidden sm:flex">
+    <nav aria-label="Breadcrumb" className="flex">
       <ol className="flex items-center space-x-1">
         {items.map(({ name, slug, current }, index) => (
           <li key={name}>
