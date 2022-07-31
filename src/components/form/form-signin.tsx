@@ -5,6 +5,8 @@ import { BiLogInCircle } from 'react-icons/bi'
 import { postLogin } from '~/lib/service'
 import Cookies from 'js-cookie'
 import { useAuthContext } from '~/context/auth-context'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 type UserSignIn = {
   email: string
@@ -13,15 +15,22 @@ type UserSignIn = {
 
 const FormSignIn: React.FC = () => {
   const { register, formState: { errors }, handleSubmit } = useForm<UserSignIn>()
-  const { handleAuth } = useAuthContext()
+  const navigate = useNavigate()
+  const { handleAuth, token } = useAuthContext()
+  React.useEffect(() => {
+    token && navigate('/dashboard', {replace: true})
+  }, [])
+
   const { mutate, isError, isLoading } = useMutation(postLogin, {
     onError: (error: any) => {
-      console.error(error.response.data.error)
+      // console.error(error.response.data.error)
+      toast.error(error.response.data.error)
     },
     onSuccess: (data) => {
       // @ts-ignore
       handleAuth(data.access_token)
       Cookies.set('token', data.access_token, { expires: 1 })
+      navigate('/dashboard', {replace: true})
     }
   })
   async function onSubmit(values: UserSignIn) {
