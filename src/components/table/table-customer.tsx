@@ -39,7 +39,7 @@ const TableCustomer: React.FC = () => {
       {
         id: 'Actions',
         // @ts-ignore
-        cell: props => <ButtonActions customer={props.row.original}  />,
+        cell: props => <ButtonActions id={props.row.original.id}  />,
       }
     ],
     []
@@ -59,7 +59,7 @@ const TableCustomer: React.FC = () => {
     getPaginationRowModel: getPaginationRowModel(),
   })
   return (
-    <div className=' w-full max-w-xs md:max-w-none overflow-x-scroll p-6 bg-white rounded mt-5'>
+    <div className=' w-full max-w-xs sm:max-w-none overflow-x-scroll p-6 bg-white rounded mt-5'>
       <table className='w-full text-sm text-left text-gray-500 border'>
         <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
           {table.getHeaderGroups().map(headerGroup => (
