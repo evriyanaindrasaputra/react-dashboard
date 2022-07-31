@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { BiLogInCircle } from 'react-icons/bi'
 import { postLogin } from '~/lib/service'
 import Cookies from 'js-cookie'
+import { useAuthContext } from '~/context/auth-context'
 
 type UserSignIn = {
   email: string
@@ -12,11 +13,14 @@ type UserSignIn = {
 
 const FormSignIn: React.FC = () => {
   const { register, formState: { errors }, handleSubmit } = useForm<UserSignIn>()
+  const { handleAuth } = useAuthContext()
   const { mutate, isError, isLoading } = useMutation(postLogin, {
     onError: (error: any) => {
       console.error(error.response.data.error)
     },
     onSuccess: (data) => {
+      // @ts-ignore
+      handleAuth(data.access_token)
       Cookies.set('token', data.access_token, { expires: 1 })
     }
   })
