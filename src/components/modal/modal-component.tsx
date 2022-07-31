@@ -20,7 +20,7 @@ const ModalComponent: React.FC<{ isOpen: boolean, setIsOpen: () => void, childre
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full w-full justify-center items-center text-center">
+            <div className="flex min-h-full w-full px-5 sm:px-0 justify-center items-center text-center">
               <Transition.Child
                 as={React.Fragment}
                 enter="ease-out duration-300"
