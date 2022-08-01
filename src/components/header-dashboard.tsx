@@ -11,7 +11,7 @@ type HeaderDashboardProps = {
 
 const HeaderDashboard: React.FC<HeaderDashboardProps> = ({ breadcrumb }) => {
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-end sm:justify-between">
       <Breadcrumb items={breadcrumb} />
       <div className="flex items-center space-x-1">
         <button
