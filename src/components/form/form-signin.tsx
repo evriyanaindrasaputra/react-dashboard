@@ -18,7 +18,7 @@ const FormSignIn: React.FC = () => {
   const navigate = useNavigate()
   const { handleAuth, token } = useAuthContext()
   React.useEffect(() => {
-    token && navigate('/dashboard', {replace: true})
+    token && navigate('/dashboard', { replace: true })
   }, [])
 
   const { mutate, isError, isLoading } = useMutation(postLogin, {
@@ -30,7 +30,7 @@ const FormSignIn: React.FC = () => {
       // @ts-ignore
       handleAuth(data.access_token)
       Cookies.set('token', data.access_token, { expires: 1 })
-      navigate('/dashboard', {replace: true})
+      navigate('/dashboard', { replace: true })
     }
   })
   async function onSubmit(values: UserSignIn) {
@@ -72,10 +72,8 @@ const FormSignIn: React.FC = () => {
             type="submit"
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
           >
-            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-              <BiLogInCircle className="h-5 w-5 text-emerald-500 group-hover:text-emerald-400" aria-hidden="true" />
-            </span>
             Sign in
+            <BiLogInCircle className="h-5 w-5 ml-2 text-white group-hover:text-emerald-400" aria-hidden="true" />
           </button>
         </div>
       </form>
